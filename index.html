@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro</title>
+  <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+  <main>
+    <h1>Registro</h1>
+    <p class="intro">Llena tus datos para crear tu cuenta.</p>
+
+    <form id="formRegistro" novalidate>
+      <div class="campo">
+        <label for="nombre">Nombre completo</label>
+        <div class="fila">
+          <input id="nombre" type="text" autocomplete="name">
+          <button type="button" id="botonCorregir" class="boton-corregir">Corregir</button>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" autocomplete="email">
+      </div>
+
+      <div class="campo">
+        <label for="telefono">Teléfono (10 dígitos)</label>
+        <input id="telefono" type="tel" inputmode="numeric" maxlength="10">
+      </div>
+
+      <div class="campo">
+        <label for="fecha">Fecha de nacimiento (DD/MM/AAAA)</label>
+        <input id="fecha" type="text" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA">
+      </div>
+
+      <div class="campo">
+        <label for="contrasenia">Contraseña</label>
+        <input id="contrasenia" type="password" autocomplete="new-password">
+      </div>
+
+      <button type="submit">Crear cuenta</button>
+      <button type="reset" class="boton-limpiar">Limpiar</button>
+    </form>
+
+    <p class="enlace">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+  </main>
+
+  <!-- VENTANA MODAL -->
+  <dialog id="modal">
+    <h2 id="modalTitulo">Hola</h2>
+    <p>Tu edad es</p>
+    <div class="edad" id="modalEdad">0</div>
+    <p>años</p>
+    <p class="estado" id="modalEstado"></p>
+    <button type="button" id="botonCerrarModal">Cerrar</button>
+  </dialog>
+
+  <script src="js/utileria.js"></script>
+  <script src="js/formulario.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main>
+    <h1>Iniciar sesión</h1>
+    <p class="intro">Entra con tu correo y contraseña.</p>
+
+    <form id="formLogin" novalidate>
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" autocomplete="email">
+      </div>
+
+      <div class="campo">
+        <label for="contrasenia">Contraseña</label>
+        <input id="contrasenia" type="password" autocomplete="current-password">
+      </div>
+
+      <button type="submit">Iniciar sesión</button>
+      <button type="reset" class="boton-limpiar">Limpiar</button>
+    </form>
+
+    <p class="enlace">¿No tienes cuenta? <a href="index.html">Regístrate</a></p>
+  </main>
+
+  <script src="js/utileria.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
