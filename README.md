@@ -128,4 +128,4 @@ ocultarCorreo("juanperez@gmail.com"); // "j********@gmail.com"
 
 ### Video promocional
 
-![video](img/video.mp4)
+[ Ver video](https://jesuscortes-designer.github.io/actividad-2-utileria/img/video.mp4)
