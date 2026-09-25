@@ -9,6 +9,7 @@ utileria/
 ├── css/
 │   ├── formulario.css   → Estilos del registro y la modal
 │   └── login.css        → Estilos del login
+├── img/                 → Capturas de pantalla
 ├── js/
 │   ├── formulario.js    → Lógica del registro y la modal
 │   ├── login.js         → Lógica del login
@@ -111,17 +112,8 @@ ocultarCorreo("juanperez@gmail.com"); // "j********@gmail.com"
 
 ---
 
-## Dónde se usa cada función
+## Capturas de pantalla
 
-| Función | index.html | login.html |
-|---|---|---|
-| validarCorreo | ✓ | ✓ |
-| soloLetras | ✓ (nombre) | |
-| validarLongitud | ✓ (teléfono) | |
-| calcularEdad | ✓ (modal) | |
-| esMayorDeEdad | ✓ (bloquea a menores) | |
-| validarPassword | ✓ | ✓ |
-| formatearNombre | ✓ (botón Corregir y modal) | |
-| ocultarCorreo | ✓ (modal) | ✓ (alert de bienvenida) |
+### Consola mostrando resultados
 
 ![Resultados de las funciones en consola](img/image.png)
