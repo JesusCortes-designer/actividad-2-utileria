@@ -111,9 +111,21 @@ ocultarCorreo("juanperez@gmail.com"); // "j********@gmail.com"
 ```
 
 ---
-
 ## Capturas de pantalla
+
+![Captura 1](img/captura1.png)
+
+![Captura 2](img/captura2.png)
+
+![Captura 3](img/captura3.png)
+
+![Captura 4](img/captura4.png)
+![Captura 5](img/captura5.png)
 
 ### Consola mostrando resultados
 
 ![Resultados de las funciones en consola](img/image.png)
+
+### Video promocional
+
+![video](img/video.mp4)
