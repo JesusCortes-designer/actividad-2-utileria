@@ -1,12 +1,13 @@
-// LIBRERÍA DE VALIDACIONES PARA EL REGISTRO (index.html) Y EL LOGIN (login.html)
+// Aquí están todas las funciones que uso en el registro y en el login
 
 
-// ===================== FUNCIONES OBLIGATORIAS =====================
+// ---------- Funciones que se pdidieron ----------
 
 
-// VALIDA QUE EL CORREO TENGA USUARIO, @, DOMINIO Y EXTENSIÓN DE MÍNIMO 2 LETRAS, SIN ESPACIOS
-// RECIBE: CORREO (TEXTO) | REGRESA: TRUE O FALSE
-// EJEMPLO: validarCorreo("ana@gmail.com") -> TRUE | validarCorreo("ana@gmail") -> FALSE
+// Revisa que el correo esté bien escrito: algo@algo.com
+// Si le falta el @, el punto o tiene espacios, regresa false
+// validarCorreo("ana@gmail.com") da true
+// validarCorreo("ana@gmail") da false
 function validarCorreo(correo) {
   if (typeof correo !== "string") return false;
   const expresion = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
@@ -14,9 +15,10 @@ function validarCorreo(correo) {
 }
 
 
-// VALIDA QUE SOLO HAYA LETRAS. ACEPTA ACENTOS, Ñ, Ü Y UN ESPACIO ENTRE PALABRAS
-// RECIBE: TEXTO | REGRESA: TRUE O FALSE
-// EJEMPLO: soloLetras("María José") -> TRUE | soloLetras("Juan123") -> FALSE
+// Revisa que nada más haya letras
+// Sí deja acentos, ñ y espacios para nombres como "María José"
+// soloLetras("María José") da true
+// soloLetras("Juan123") da false
 function soloLetras(texto) {
   if (typeof texto !== "string") return false;
   const expresion = /^[A-Za-zÁÉÍÓÚáéíóúÜüÑñ]+( [A-Za-zÁÉÍÓÚáéíóúÜüÑñ]+)*$/;
@@ -24,9 +26,10 @@ function soloLetras(texto) {
 }
 
 
-// VALIDA QUE SEAN SOLO DÍGITOS Y QUE NO PASEN DEL MÁXIMO INDICADO
-// RECIBE: NUMERO (TEXTO O NÚMERO), MAXLONGITUD (NÚMERO) | REGRESA: TRUE O FALSE
-// EJEMPLO: validarLongitud("9511234567", 10) -> TRUE | validarLongitud("95a1", 10) -> FALSE
+// Revisa que sean puros números y que no pasen del máximo que le digas
+// La uso para que el teléfono tenga 10 dígitos
+// validarLongitud("9511234567", 10) da true
+// validarLongitud("95a1", 10) da false porque tiene una letra
 function validarLongitud(numero, maxLongitud) {
   const texto = String(numero).trim();
   if (!/^\d+$/.test(texto)) return false;
@@ -34,8 +37,9 @@ function validarLongitud(numero, maxLongitud) {
 }
 
 
-// APOYO INTERNO: CONVIERTE "AAAA-MM-DD" A FECHA EN HORA LOCAL
-// REGRESA NULL SI LA FECHA NO EXISTE (EJ. 31 DE FEBRERO)
+// Esta es de ayuda, la usan calcularEdad y esMayorDeEdad
+// Convierte "2004-12-31" en una fecha que JavaScript entiende
+// Si la fecha no existe, como 31 de febrero, regresa null
 function convertirFechaInterna(fecha) {
   if (typeof fecha !== "string") return null;
   const partes = fecha.split("-").map(Number);
@@ -49,9 +53,10 @@ function convertirFechaInterna(fecha) {
 }
 
 
-// CALCULA LOS AÑOS CUMPLIDOS. RESTA UNO SI AÚN NO LLEGA SU CUMPLEAÑOS ESTE AÑO
-// RECIBE: FECHANACIMIENTO ("AAAA-MM-DD") | REGRESA: EDAD (ENTERO) O -1 SI LA FECHA ES INVÁLIDA O FUTURA
-// EJEMPLO: calcularEdad("2000-01-01") -> 26 (EN 2026)
+// Saca la edad con la fecha de nacimiento
+// Si todavía no le toca su cumpleaños este año, le resta uno
+// Si la fecha está mal o es del futuro regresa -1
+// calcularEdad("2000-01-01") da 26 (en 2026)
 function calcularEdad(fechaNacimiento) {
   const nacimiento = convertirFechaInterna(fechaNacimiento);
   if (!nacimiento) return -1;
@@ -62,6 +67,7 @@ function calcularEdad(fechaNacimiento) {
   let edad = hoy.getFullYear() - nacimiento.getFullYear();
   const diferenciaMeses = hoy.getMonth() - nacimiento.getMonth();
 
+  // si no ha llegado su mes, o es su mes pero no su día, aún no cumple
   if (diferenciaMeses < 0 || (diferenciaMeses === 0 && hoy.getDate() < nacimiento.getDate())) {
     edad--;
   }
@@ -70,17 +76,19 @@ function calcularEdad(fechaNacimiento) {
 }
 
 
-// REVISA SI TIENE 18 AÑOS O MÁS USANDO CALCULAREDAD
-// RECIBE: FECHANACIMIENTO ("AAAA-MM-DD") | REGRESA: TRUE O FALSE
-// EJEMPLO: esMayorDeEdad("2000-01-01") -> TRUE | esMayorDeEdad("2015-01-01") -> FALSE
+// Dice si ya tiene 18 o más
+// Usa calcularEdad para no repetir código
+// esMayorDeEdad("2000-01-01") da true
+// esMayorDeEdad("2015-01-01") da false
 function esMayorDeEdad(fechaNacimiento) {
   return calcularEdad(fechaNacimiento) >= 18;
 }
 
 
-// EXIGE MÍNIMO 8 CARACTERES, UNA MAYÚSCULA, UNA MINÚSCULA, UN NÚMERO Y UN CARÁCTER ESPECIAL
-// RECIBE: PASSWORD (TEXTO) | REGRESA: TRUE O FALSE
-// EJEMPLO: validarPassword("Hola123!") -> TRUE | validarPassword("hola123!") -> FALSE (SIN MAYÚSCULA)
+// Revisa que la contraseña sea segura:
+// mínimo 8 caracteres, una mayúscula, una minúscula, un número y un símbolo
+// validarPassword("Hola123!") da true
+// validarPassword("hola123!") da false porque no tiene mayúscula
 function validarPassword(password) {
   if (typeof password !== "string") return false;
   const expresion = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,}$/;
@@ -88,13 +96,13 @@ function validarPassword(password) {
 }
 
 
-// ===================== SECCIÓN LIBRE =====================
+// ---------- Mis funciones ----------
 
 
-// ACOMODA EL NOMBRE: QUITA ESPACIOS DE MÁS Y PONE MAYÚSCULA INICIAL EN CADA PALABRA
-// RESUELVE: NOMBRES ESCRITOS DESORDENADOS COMO "  jUAN   pérez"
-// RECIBE: TEXTO | REGRESA: NOMBRE ACOMODADO
-// EJEMPLO: formatearNombre("  jUAN   pérez ") -> "Juan Pérez"
+// Acomoda el nombre para que se vea bien
+// Quita espacios de más y pone la primera letra de cada palabra en mayúscula
+// La uso en el botón "Corregir"
+// formatearNombre("jesus cortes") da "Jesus Cortes"
 function formatearNombre(texto) {
   if (typeof texto !== "string") return "";
   return texto
@@ -105,10 +113,10 @@ function formatearNombre(texto) {
 }
 
 
-// TAPA EL CORREO CON ASTERISCOS Y DEJA VISIBLE SOLO LA PRIMERA LETRA Y EL DOMINIO
-// RESUELVE: MOSTRAR CON QUÉ CORREO SE REGISTRÓ O ENTRÓ SIN EXPONERLO COMPLETO
-// RECIBE: CORREO (TEXTO) | REGRESA: CORREO OCULTO, O "" SI NO ES VÁLIDO
-// EJEMPLO: ocultarCorreo("juanperez@gmail.com") -> "j********@gmail.com"
+// Tapa el correo con asteriscos para que no se vea completo
+// Nada más deja ver la primera letra y lo que va después del @
+// La uso para mostrar con qué correo te registraste o entraste
+// ocultarCorreo("juanperez@gmail.com") da "j********@gmail.com"
 function ocultarCorreo(correo) {
   if (!validarCorreo(correo)) return "";
   const partes = correo.trim().split("@");
